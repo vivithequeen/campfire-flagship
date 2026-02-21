@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://ckevpr2nx5w27"]
+
+[ext_resource type="Shader" uid="uid://gx4f1pvuvgc8" path="res://noob/shaders/bg_wave.gdshader" id="1_571k6"]
+[ext_resource type="Script" uid="uid://co4xytc8ruwd3" path="res://noob/scripts/calibration.gd" id="2_vc1oo"]
+[ext_resource type="PackedScene" uid="uid://cy726wc5q8mxn" path="res://noob/scenes/input.tscn" id="3_pi1i2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vc1oo"]
+shader = ExtResource("1_571k6")
+
+[node name="Calibration" type="Control" unique_id=1672033582]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=962083402]
+visible = false
+material = SubResource("ShaderMaterial_vc1oo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.6431373, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1388325634]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1942480931]
+layout_mode = 2
+text = "Input 1:"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer" unique_id=1642447320]
+layout_mode = 2
+max_value = 0.0
+script = ExtResource("2_vc1oo")
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1992132245]
+layout_mode = 2
+text = "Input 2:"
+
+[node name="HSlider2" type="HSlider" parent="VBoxContainer" unique_id=1853533022]
+layout_mode = 2
+max_value = 0.0
+script = ExtResource("2_vc1oo")
+input_device = 1
+
+[node name="Input" parent="." unique_id=1991734150 instance=ExtResource("3_pi1i2")]

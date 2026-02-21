@@ -12,8 +12,7 @@ var input_device = 0
 @export var visualiser: Sprite2D
 @export var visualiser_2: Sprite2D
 var audio_input_devices
-var input_one_device = 2
-var input_two_device = 3 
+var timer_2: float = 0
 
 func _ready() -> void:
 	var idx = AudioServer.get_bus_index("mic_1")
@@ -33,27 +32,31 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	timer += delta
-	if timer > 0.1:
-		timer = 0
-		var temp_recording = effect.get_recording()
-		if temp_recording:
-			# if !effect.is_empty():?\
-			var avg: float = 0
-			var index = -1
-			for i in temp_recording.data:
-				index += 1
-				# if index % 2 == 0:
-				# 	continue
-				avg += abs(i)
-				# if i > 0:
-				# 	print(i)
-			if avg >  (max_vol if input_device == 0 else max_vol_2):
-				if input_device == 0: 	max_vol = avg
-				else: 					max_vol_2 = avg
-			if input_device == 0: 	visualiser.global_position.x = avg / max_vol * 1000
-			else: 					visualiser_2.global_position.x = avg / max_vol_2 * 1000
-			print(avg, " ", input_device, " ", (max_vol if input_device == 0 else max_vol_2))
-			effect.set_recording_active(false)
+	timer_2 += delta
+	
+	var temp_recording = effect.get_recording()
+	if temp_recording:
+		# if !effect.is_empty():?\
+		var avg: float = 0
+		var index = -1
+		for i in temp_recording.data.slice(temp_recording.data.size() - 1000):
+			index += 1
+			# if index % 2 == 0:
+			# 	continue
+			avg += abs(i)
+			# if i > 0:
+			# 	print(i)
+		if avg >  (max_vol if input_device == 0 else max_vol_2):
+			if input_device == 0: 	max_vol = avg
+			else: 					max_vol_2 = avg
+		if input_device == 0: 	visualiser.global_position.x = avg / max_vol * 600
+		else: 					visualiser_2.global_position.x = avg / max_vol_2 * 600
+		print(avg, " ", input_device, " ", (max_vol if input_device == 0 else max_vol_2))
+		if timer_2 > 0.2:
+			timer_2 = 0
 			input_device = (input_device + 1) % 2
-			AudioServer.set_input_device(audio_input_devices[input_one_device if input_device == 0 else input_two_device])
-			effect.set_recording_active(true)
+			AudioServer.set_input_device(audio_input_devices[Volume_calibrations.mics[0] if input_device == 0 else Volume_calibrations.mics[1]])
+	if timer > 1:
+		timer = 0
+		effect.set_recording_active(false)
+		effect.set_recording_active(true)
