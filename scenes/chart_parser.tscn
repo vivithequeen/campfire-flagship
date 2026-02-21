@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d3l556b1w5xi4"]
+
+[ext_resource type="Script" uid="uid://lhd0ykkfxof6" path="res://scenes/chart_parser.gd" id="1_om2yl"]
+
+[node name="ChartParser" type="Node" unique_id=1674266622]
+script = ExtResource("1_om2yl")
