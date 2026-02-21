@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://gx4f1pvuvgc8" path="res://noob/shaders/bg_wave.gdshader" id="1_571k6"]
 [ext_resource type="Script" uid="uid://co4xytc8ruwd3" path="res://noob/scripts/calibration.gd" id="2_vc1oo"]
 [ext_resource type="PackedScene" uid="uid://cy726wc5q8mxn" path="res://noob/scenes/input.tscn" id="3_pi1i2"]
+[ext_resource type="Script" uid="uid://d02k141viprc" path="res://noob/scripts/ambience_filter.gd" id="3_vjscj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vc1oo"]
 shader = ExtResource("1_571k6")
@@ -47,14 +48,15 @@ layout_mode = 2
 max_value = 0.0
 script = ExtResource("2_vc1oo")
 
-[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1992132245]
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer" unique_id=1960612665]
 layout_mode = 2
-text = "Input 2:"
+text = "Ambience filter"
+script = ExtResource("3_vjscj")
 
-[node name="HSlider2" type="HSlider" parent="VBoxContainer" unique_id=1853533022]
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=388869606]
 layout_mode = 2
-max_value = 0.0
-script = ExtResource("2_vc1oo")
-input_device = 1
+text = "Reset
+"
 
 [node name="Input" parent="." unique_id=1991734150 instance=ExtResource("3_pi1i2")]
+setting_max = true
