@@ -22,6 +22,7 @@ func _ready() -> void:
 	print(audio_input_devices)
 	AudioServer.set_input_device(audio_input_devices[0])
 	effect.set_recording_active(true)
+	
 	# await get_tree().create_timer(1).timeout
 	# for i in effect.get_recording().data:
 	# 	if i != 0:
@@ -39,7 +40,7 @@ func _process(delta: float) -> void:
 		# if !effect.is_empty():?\
 		var avg: float = 0
 		var index = -1
-		for i in temp_recording.data.slice(temp_recording.data.size() - 1000):
+		for i in temp_recording.data.slice(temp_recording.data.size() - 10000):
 			index += 1
 			# if index % 2 == 0:
 			# 	continue
