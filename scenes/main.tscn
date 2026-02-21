@@ -51,55 +51,67 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_stepb")
 
-[node name="Main" type="Node3D" unique_id=1218756885]
+[node name="Main" type="Node3D" unique_id=1218756885 node_paths=PackedStringArray("lanes")]
 script = ExtResource("1_0wfyh")
+lanes = [NodePath("note_path5"), NodePath("note_path3"), NodePath("note_path"), NodePath("note_path2"), NodePath("note_path4")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=468299888]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0.36136204, 2.338531)
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0.7613621, 2.838531)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=7506282]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49804688, -122.50737)
 flip_faces = true
-size = Vector3(3, 2.0039063, 249.90001)
+size = Vector3(4, 2.0039063, 249.90001)
 material = SubResource("StandardMaterial3D_sgp6g")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=667554987]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, -0.4995, -89.15001)
-size = Vector3(0.25, 0.001, 184.90001)
-material = SubResource("StandardMaterial3D_o5qli")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=816445820]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.4995, -90.45)
-size = Vector3(0.25, 0.001, 187.5)
-material = SubResource("StandardMaterial3D_o5qli")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1994140594]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999998, -0.4995, -110.85)
-size = Vector3(0.25, 0.001, 228.3)
-material = SubResource("StandardMaterial3D_o5qli")
-
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1857422959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8999999, -0.4995, -82.799995)
+size = Vector3(0.25, 0.001, 172.2)
+material = SubResource("StandardMaterial3D_o5qli")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=943421163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9000001, -0.4995, -82.799995)
+size = Vector3(0.25, 0.001, 172.2)
+material = SubResource("StandardMaterial3D_o5qli")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=100524303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40000013, -0.4995, -82.799995)
+size = Vector3(0.25, 0.001, 172.2)
+material = SubResource("StandardMaterial3D_o5qli")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="." unique_id=574027173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3999999, -0.4995, -82.799995)
+size = Vector3(0.25, 0.001, 172.2)
+material = SubResource("StandardMaterial3D_o5qli")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=959644938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2000002, -0.4995, -82.799995)
+size = Vector3(0.25, 0.001, 172.2)
+material = SubResource("StandardMaterial3D_o5qli")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="." unique_id=593054331]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1999999, -0.4995, -82.799995)
 size = Vector3(0.25, 0.001, 172.2)
 material = SubResource("StandardMaterial3D_o5qli")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=1450587227]
-transform = Transform3D(0.0057071894, 0, 0.9999837, 0.66353685, 0.748134, -0.003786992, -0.74812186, 0.66354764, 0.0042697424, -0.122776866, -0.4995, -94.38025)
-size = Vector3(0.25, 0.001, 104.91719)
-material = SubResource("StandardMaterial3D_o5qli")
-
 [node name="greg" type="MeshInstance3D" parent="." unique_id=1230887293]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4901161e-08, -0.53790694, 1.6424849)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, -0.538, 1.642)
 mesh = SubResource("ArrayMesh_sugp2")
 
 [node name="greg_logic" parent="." unique_id=99708880 node_paths=PackedStringArray("greg_model") instance=ExtResource("3_sugp2")]
 greg_model = NodePath("../greg")
 
-[node name="note_path" parent="." unique_id=1884821427 instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.4)
-
-[node name="note_path2" parent="." unique_id=426235816 instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, -6.4)
+[node name="note_path5" parent="." unique_id=1299989830 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55, -0.15, -5.2)
 
 [node name="note_path3" parent="." unique_id=1856462577 instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, -6.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, -0.15, -5.2)
+
+[node name="note_path" parent="." unique_id=1884821427 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -5.2)
+
+[node name="note_path2" parent="." unique_id=426235816 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -0.15, -5.2)
+
+[node name="note_path4" parent="." unique_id=1173584408 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5500001, -0.15, -5.2)

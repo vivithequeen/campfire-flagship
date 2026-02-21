@@ -4,7 +4,7 @@ extends Node
 var greg_lane : int = 1;
 
 
-var lane_x = [-0.8,0,0.8]
+var lane_x = [-1.6,-0.8,0,0.8,1.6]
 
 
 @export var greg_model : Node3D
@@ -12,7 +12,6 @@ var lane_x = [-0.8,0,0.8]
 func _physics_process(delta: float) -> void:
 		
 	var dir = int(Input.is_action_just_pressed("left")) - int(Input.is_action_just_pressed("right"))
-	print(greg_lane)
 
 	if(dir == -1):
 		move_left()
@@ -27,7 +26,7 @@ func move_right():
 	greg_lane-=1;
 
 func move_left():
-	if(greg_lane == 2):
+	if(greg_lane == 4):
 		return;
 	
 	move_greg(greg_lane, greg_lane+1)
