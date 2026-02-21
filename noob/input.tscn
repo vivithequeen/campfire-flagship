@@ -1,3 +1,26 @@
 [gd_scene format=3 uid="uid://cy726wc5q8mxn"]
 
-[node name="Input" type="Node" unique_id=1991734150]
+[ext_resource type="Script" uid="uid://cayje6theknyn" path="res://noob/scripts/NB_input.gd" id="1_6qndr"]
+[ext_resource type="Texture2D" uid="uid://lpmgebw2aj0w" path="res://icon.svg" id="2_38ry3"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_6qndr"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_38ry3"]
+
+[node name="Input" type="Node" unique_id=1991734150 node_paths=PackedStringArray("visualiser")]
+script = ExtResource("1_6qndr")
+visualiser = NodePath("Sprite2D")
+
+[node name="Recorder_1" type="AudioStreamPlayer" parent="." unique_id=738993883]
+stream = SubResource("AudioStreamMicrophone_6qndr")
+autoplay = true
+bus = &"mic_1"
+
+[node name="Recorder_2" type="AudioStreamPlayer" parent="." unique_id=184694712]
+stream = SubResource("AudioStreamMicrophone_38ry3")
+autoplay = true
+bus = &"mic_2"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=747813570]
+position = Vector2(174, 252)
+texture = ExtResource("2_38ry3")
