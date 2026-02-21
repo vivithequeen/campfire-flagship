@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dm2mmoevxbep5" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://fukh5p0acmlr" path="res://models/3DModel.jpg" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://jabhsmy03ixw" path="res://scenes/greg_logic.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://c2c2krbk6butt" path="res://scenes/notes/note_path.tscn" id="4_jyhfs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgp6g"]
 shading_mode = 0
@@ -57,29 +58,29 @@ script = ExtResource("1_0wfyh")
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0.36136204, 2.338531)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=7506282]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49804688, -46.9934)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49804688, -122.50737)
 flip_faces = true
-size = Vector3(3, 2.0039063, 98.87207)
+size = Vector3(3, 2.0039063, 249.90001)
 material = SubResource("StandardMaterial3D_sgp6g")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=667554987]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, -0.4995, -48.55625)
-size = Vector3(0.25, 0.001, 103.7125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, -0.4995, -89.15001)
+size = Vector3(0.25, 0.001, 184.90001)
 material = SubResource("StandardMaterial3D_o5qli")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=816445820]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.4995, -53.901367)
-size = Vector3(0.25, 0.001, 114.40274)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.4995, -90.45)
+size = Vector3(0.25, 0.001, 187.5)
 material = SubResource("StandardMaterial3D_o5qli")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1994140594]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999998, -0.4995, -50.03784)
-size = Vector3(0.25, 0.001, 106.67569)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999998, -0.4995, -110.85)
+size = Vector3(0.25, 0.001, 228.3)
 material = SubResource("StandardMaterial3D_o5qli")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1857422959]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1999999, -0.4995, -49.158592)
-size = Vector3(0.25, 0.001, 104.91719)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1999999, -0.4995, -82.799995)
+size = Vector3(0.25, 0.001, 172.2)
 material = SubResource("StandardMaterial3D_o5qli")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=1450587227]
@@ -93,3 +94,12 @@ mesh = SubResource("ArrayMesh_sugp2")
 
 [node name="greg_logic" parent="." unique_id=99708880 node_paths=PackedStringArray("greg_model") instance=ExtResource("3_sugp2")]
 greg_model = NodePath("../greg")
+
+[node name="note_path" parent="." unique_id=1884821427 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.4)
+
+[node name="note_path2" parent="." unique_id=426235816 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, -6.4)
+
+[node name="note_path3" parent="." unique_id=1856462577 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, -6.4)

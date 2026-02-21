@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c2c2krbk6butt"]
+
+[ext_resource type="Script" uid="uid://dykfq5gs810tn" path="res://scenes/notes/note_path.gd" id="1_2mf4t"]
+
+[sub_resource type="Curve3D" id="Curve3D_v8fhc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8.001696),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="note_path" type="Path3D" unique_id=1884821427]
+curve = SubResource("Curve3D_v8fhc")
+script = ExtResource("1_2mf4t")

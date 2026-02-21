@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 	elif(dir == 1):
 		move_right();
 		
-
 func move_right():
 	if(greg_lane == 0):
 		return;
