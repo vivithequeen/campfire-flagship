@@ -1,13 +1,105 @@
 [gd_scene format=3 uid="uid://bcffiv3nbx67d"]
 
 [ext_resource type="Texture2D" uid="uid://dxo02d5b74wmh" path="res://assets/piller.png" id="1_u8ikk"]
+[ext_resource type="PackedScene" uid="uid://blc5ne7ys6xwl" path="res://models/handpainted_baguette.glb" id="2_djjql"]
+[ext_resource type="Texture2D" uid="uid://cmmv6oeymdnaw" path="res://assets/baguette_trailing-Sheet.png" id="3_oa5qm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u8ikk"]
 size = Vector3(0.4, 0.8, 0.2)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa5qm"]
+atlas = ExtResource("3_oa5qm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h187s"]
+atlas = ExtResource("3_oa5qm")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgx3f"]
+atlas = ExtResource("3_oa5qm")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgx3f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa5qm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h187s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgx3f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 18.0
+}]
+
+[sub_resource type="Animation" id="Animation_oa5qm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_Scene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.10322282, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2, 2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_h187s"]
+resource_name = "rise"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_Scene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.17075509, 1),
+"update": 0,
+"values": [Vector3(0, -0.79403317, 0), Vector3(0, -0.10322282, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.53333336),
+"transitions": PackedFloat32Array(0.4061265, 0.35355344, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(2.75, 2.75, 2.75), Vector3(2, 2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgx3f"]
+_data = {
+&"RESET": SubResource("Animation_oa5qm"),
+&"rise": SubResource("Animation_h187s")
+}
+
 [node name="note" type="PathFollow3D" unique_id=1304796827]
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1138305486]
+visible = false
 pixel_size = 0.06
 texture_filter = 0
 texture = ExtResource("1_u8ikk")
@@ -17,3 +109,17 @@ texture = ExtResource("1_u8ikk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2139866387]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4901161e-08, 2.9802322e-08, 2.9802322e-08)
 shape = SubResource("BoxShape3D_u8ikk")
+
+[node name="Sketchfab_Scene" parent="." unique_id=577823473 instance=ExtResource("2_djjql")]
+transform = Transform3D(-0.002, -3.0199163e-10, 6.6002366e-18, 0, -8.742278e-11, -0.001, 3.0199163e-10, -0.002, 4.371139e-11, 0, -0.10322282, 0)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1231671162]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, 0, -0.32324222, 0.299967)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rgx3f")
+autoplay = "default"
+frame_progress = 0.62101185
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1335656612]
+libraries/ = SubResource("AnimationLibrary_rgx3f")
+autoplay = &"rise"
