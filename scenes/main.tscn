@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://co81aul37wxis" path="res://scenes/french.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://d3l556b1w5xi4" path="res://scenes/chart_parser.tscn" id="5_tefeu"]
 [ext_resource type="AudioStream" uid="uid://dgppupglo3wyn" path="res://assets/greg vs the french.ogg" id="6_o6xl0"]
+[ext_resource type="Shader" uid="uid://dtu8a5bcdbo4t" path="res://scenes/clouds.gdshader" id="6_ya4ey"]
+[ext_resource type="Shader" uid="uid://dnwowxvh5y2hn" path="res://scenes/flash.gdshader" id="7_ya4ey"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85g3d"]
 bg_color = Color(0.88, 0, 0.014666443, 1)
@@ -19,6 +21,16 @@ bg_color = Color(0.20392157, 0.8784314, 0, 1)
 [sub_resource type="Theme" id="Theme_ya4ey"]
 ProgressBar/styles/background = SubResource("StyleBoxFlat_85g3d")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_choun")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_85g3d"]
+viewport_path = NodePath("Camera3D/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8y0u"]
+shader = ExtResource("6_ya4ey")
+shader_parameter/cell_size = 4.0
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed = 40.0
+shader_parameter/color_speed = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgp6g"]
 shading_mode = 0
@@ -31,6 +43,12 @@ albedo_color = Color(0.44705883, 0.8627451, 0.73333335, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5qli"]
 shading_mode = 0
 albedo_color = Color(0.20392157, 0.6745098, 0.7294118, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
+render_priority = 0
+shader = ExtResource("7_ya4ey")
+shader_parameter/flash = 0.0
+shader_parameter/custom_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wfyh"]
 resource_name = "3DModel"
@@ -125,7 +143,25 @@ transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0.761
 
 [node name="Sprite3D" type="Sprite3D" parent="Camera3D" unique_id=1290593075]
 transform = Transform3D(57, 0, 0, 0, 57, 0, 0, 0, 57, 0, 0, -100)
+visible = false
 texture_filter = 0
+texture = ExtResource("2_o6xl0")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Camera3D" unique_id=139800875]
+transform = Transform3D(57, 0, 0, 0, 56.999992, 0, 0, 0, 56.999992, 0, 23.72908, -86.29997)
+texture_filter = 0
+texture = SubResource("ViewportTexture_85g3d")
+
+[node name="SubViewport" type="SubViewport" parent="Camera3D" unique_id=1522074648]
+disable_3d = true
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(480, 269)
+
+[node name="TextureRect" type="TextureRect" parent="Camera3D/SubViewport" unique_id=356945348]
+material = SubResource("ShaderMaterial_a8y0u")
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("2_o6xl0")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=7506282]
@@ -166,6 +202,7 @@ material = SubResource("StandardMaterial3D_o5qli")
 
 [node name="greg" type="MeshInstance3D" parent="." unique_id=1230887293]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, -0.538, 1.642)
+material_overlay = SubResource("ShaderMaterial_eb6dy")
 mesh = SubResource("ArrayMesh_sugp2")
 
 [node name="Area3D" type="Area3D" parent="greg" unique_id=443181502]
@@ -193,6 +230,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -0.15, -5.2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5500001, -0.15, -5.2)
 
 [node name="french" parent="." unique_id=370817246 instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -1.9000001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -1.9000001)
 
 [connection signal="area_entered" from="greg/Area3D" to="." method="_on_area_3d_area_entered"]
