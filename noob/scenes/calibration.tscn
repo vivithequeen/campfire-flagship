@@ -2,6 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://gx4f1pvuvgc8" path="res://noob/shaders/bg_wave.gdshader" id="1_571k6"]
 [ext_resource type="Script" uid="uid://co4xytc8ruwd3" path="res://noob/scripts/calibration.gd" id="2_vc1oo"]
+[ext_resource type="Script" uid="uid://cqbmp44jq7mjq" path="res://noob/scripts/max_redefiner.gd" id="3_m35xt"]
 [ext_resource type="PackedScene" uid="uid://cy726wc5q8mxn" path="res://noob/scenes/input.tscn" id="3_pi1i2"]
 [ext_resource type="Script" uid="uid://j3vg5osjr87a" path="res://noob/scripts/calibator_button.gd" id="3_vjscj"]
 
@@ -48,6 +49,12 @@ layout_mode = 2
 max_value = 0.0
 script = ExtResource("2_vc1oo")
 
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer" unique_id=1372007902 node_paths=PackedStringArray("theone")]
+layout_mode = 2
+text = "Max redifine"
+script = ExtResource("3_m35xt")
+theone = NodePath("../../Input")
+
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=388869606 node_paths=PackedStringArray("labels")]
 layout_mode = 2
 text = "RESET"
@@ -81,6 +88,7 @@ text = "calibrating: none"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="VBoxContainer" unique_id=1734324685]
+visible = false
 z_index = 2
 layout_mode = 2
 text = "How to calibrate:
@@ -91,4 +99,3 @@ text = "How to calibrate:
 5. do the same to left"
 
 [node name="Input" parent="." unique_id=1991734150 instance=ExtResource("3_pi1i2")]
-setting_max = true
