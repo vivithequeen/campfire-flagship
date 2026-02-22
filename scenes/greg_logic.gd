@@ -35,4 +35,5 @@ func move_left():
 func move_greg(from, to):
 	var tween = get_tree().create_tween()
 
-	tween.tween_property(greg_model, "global_position:x", lane_x[to], get_process_delta_time()*10);
+	tween.tween_property(greg_model, "global_position:x", lane_x[to], 0.1) \
+			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)

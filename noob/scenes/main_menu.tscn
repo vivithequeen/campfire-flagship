@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://lvny7ga2o65w"]
 
+[ext_resource type="Texture2D" uid="uid://bum3644bqlsqq" path="res://noob/assets/loadingImg.png" id="1_e2xws"]
+[ext_resource type="Script" uid="uid://bgg1echkydap7" path="res://noob/scenes/main_menu.gd" id="1_ejwqg"]
+
 [node name="main_menu" type="Control" unique_id=1322387850]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ejwqg")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=571890503]
 layout_mode = 1
@@ -15,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.5734735, 0.8003885, 0.9078005, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="." unique_id=2008771858]
 layout_mode = 0
@@ -34,3 +38,28 @@ theme_override_font_sizes/font_size = 30
 text = "Add main menu and make it lead to [calibration] scene
 (rn goal get player to able to calibrate and play and loose at least one round XD)
 "
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1101737171]
+layout_mode = 0
+offset_right = 278.0
+offset_bottom = 270.0
+texture = ExtResource("1_e2xws")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="." unique_id=1652433701]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 295.0
+offset_top = -63.0
+offset_right = -36.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Begin"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
