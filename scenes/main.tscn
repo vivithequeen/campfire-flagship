@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dm2mmoevxbep5" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://fukh5p0acmlr" path="res://models/3DModel.jpg" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bkrkmj01w1o4" path="res://assets/background_no_track.png" id="2_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cy726wc5q8mxn" path="res://noob/scenes/input.tscn" id="2_tipki"]
 [ext_resource type="PackedScene" uid="uid://jabhsmy03ixw" path="res://scenes/greg_logic.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c2c2krbk6butt" path="res://scenes/notes/note_path.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://co81aul37wxis" path="res://scenes/french.tscn" id="5_tbgi4"]
@@ -64,6 +65,8 @@ size = Vector3(0.2, 1, 0.2)
 [node name="Main" type="Node3D" unique_id=1218756885 node_paths=PackedStringArray("lanes")]
 script = ExtResource("1_0wfyh")
 lanes = [NodePath("note_path5"), NodePath("note_path3"), NodePath("note_path"), NodePath("note_path2"), NodePath("note_path4")]
+
+[node name="Input" parent="." unique_id=1991734150 instance=ExtResource("2_tipki")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=468299888]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0.7613621, 2.838531)

@@ -108,10 +108,10 @@ debug = true
 [node name="Label3" type="Label" parent="." unique_id=1922914769]
 z_index = 2
 layout_mode = 0
-offset_left = 767.0
-offset_top = 134.0
-offset_right = 1271.0
-offset_bottom = 257.0
+offset_left = 561.0
+offset_top = 52.0
+offset_right = 1065.0
+offset_bottom = 175.0
 theme_override_font_sizes/font_size = 13
 text = "I am going sleep rn 
 Input can be found by loading in [Input] node 
