@@ -17,8 +17,8 @@ func resetium():
 func calib_s():
 	if Volume_calibrations.callib_mode == 0:
 		Volume_calibrations.callib_mode = -1 if left else 1
-		labels.text = "callibrating: left" if left else "callibrating: right"
+		# labels.text = "callibrating: left" if left else "callibrating: right"
 		await get_tree().create_timer(0.01).timeout
-		labels.text = "callibrating: none"
+		# labels.text = "callibrating: none"
 		Volume_calibrations.callib_mode = 0
 		
