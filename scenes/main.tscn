@@ -113,6 +113,9 @@ position = Vector2(187, 240)
 points = PackedVector2Array(0, 27, 0, 0)
 width = 1.0
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1568280701]
+
+
 [node name="ChartParser" parent="." unique_id=1674266622 instance=ExtResource("5_tefeu")]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=559565442]
