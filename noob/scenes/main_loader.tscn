@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dpne7emmf8m8y"]
+
+[ext_resource type="PackedScene" uid="uid://ckevpr2nx5w27" path="res://noob/scenes/calibration.tscn" id="1_jw0yh"]
+[ext_resource type="PackedScene" uid="uid://cy726wc5q8mxn" path="res://noob/scenes/input.tscn" id="2_gme3f"]
+
+[node name="Main_loader" type="Node3D" unique_id=858317942]
+
+[node name="Calibration" parent="." unique_id=1672033582 instance=ExtResource("1_jw0yh")]
+
+[node name="Input" parent="." unique_id=1991734150 instance=ExtResource("2_gme3f")]
+debug = true
