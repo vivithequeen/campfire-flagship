@@ -14,6 +14,8 @@ var health = 5;
 
 var hit_timer = 0;
 
+var can_be_hit = true;
+
 func pop_next_note() -> void:
 	if note_data.size() == 0:
 		next_note_position = INF
@@ -64,8 +66,37 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_3d_area_entered(_area: Area3D) -> void:
+	if(!can_be_hit):
+		return;
 	health-=1;
 	hit_timer = 0;
+	can_be_hit = false;
 	if(health == 0):
 		get_tree().change_scene_to_file("res://noob/scenes/main_menu.tscn")
-	print('asdfdf')
+		return;
+	flash_white()
+
+	
+
+func flash_white():
+	# Get any mesh that uses the shared material
+	var mesh: MeshInstance3D = $greg
+
+	# Get the base material (shared)
+	var base_mat: Material = mesh.material_overlay
+
+
+
+	# Enable flash
+	base_mat.set("shader_parameter/flash", 1.0)
+	await get_tree().create_timer(0.1).timeout
+	base_mat.set("shader_parameter/flash", 0.0)
+	await get_tree().create_timer(0.1).timeout
+	base_mat.set("shader_parameter/flash", 1.0)
+	await get_tree().create_timer(0.1).timeout
+	base_mat.set("shader_parameter/flash", 0.0)
+	await get_tree().create_timer(0.1).timeout
+	base_mat.set("shader_parameter/flash", 1.0)
+	await get_tree().create_timer(0.1).timeout
+	base_mat.set("shader_parameter/flash", 0.0)
+	can_be_hit = true;
