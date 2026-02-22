@@ -5,11 +5,12 @@ extends Node
 
 var effect : AudioEffect
 var recording
-var timer:float = 0
+var timer: float = 0
 var max_vol: float= 1
 var max_vol_2: float= 1
 @export var visualiser: Sprite2D
 @export var visualiser_2: Sprite2D
+@export var visualiser_3: Sprite2D
 var audio_input_devices
 
 func _ready() -> void:
@@ -30,31 +31,33 @@ func _process(delta: float) -> void:
 		var avg: float = 0
 		var avg_2: float = 0
 		var indexer: int = 0
-		
-		for i in temp_recording.data.slice(temp_recording.data.size() - 10000):
+		for i in temp_recording.data.slice(temp_recording.data.size() - 100000):
 			indexer = (indexer + 1) % 2
-			if Volume_calibrations.calibrating_ambience:
-				if indexer == 0:
-					if i > Volume_calibrations.noise_gate[0]: 
-						Volume_calibrations.noise_gate[0] = i
-				else:
-					if i > Volume_calibrations.noise_gate[1]: 
-						Volume_calibrations.noise_gate[1] = i
-				
-			if indexer == 0: 
-				if i < Volume_calibrations.noise_gate[0]: continue
+			if indexer == 0:
 				avg += abs(i)  
 			else: 
-				if i < Volume_calibrations.noise_gate[1]: continue
 				avg_2 += abs(i)
 		if setting_max:
 			if avg > Volume_calibrations.max_vol[0]: Volume_calibrations.max_vol[0] = avg 
 			if avg_2 > Volume_calibrations.max_vol[1]: Volume_calibrations.max_vol[1] = avg_2
-		visualiser.global_position.x = min(avg / Volume_calibrations.max_vol[0], 1) * 600
-		visualiser_2.global_position.x = min(avg_2 / Volume_calibrations.max_vol[1], 1) * 600
+		var temp_1 = min(avg / Volume_calibrations.max_vol[0], 1)
+		var temp_2 = min(avg_2 / Volume_calibrations.max_vol[1], 1)
+		visualiser.global_position.x = temp_1 * 600
+		visualiser_2.global_position.x = temp_2 * 600
+		var temp_3 = (temp_1 - Volume_calibrations.left_volume[0]) / Volume_calibrations.right_volume[0]
+		var temp_4 = (temp_2 - Volume_calibrations.left_volume[1]) / Volume_calibrations.right_volume[1]
+		visualiser_3.global_position.x = clamp(
+			temp_3 - temp_4		
+			, 0, 1)* 600
+		if Volume_calibrations.callib_mode == -1:
+			Volume_calibrations.left_volume = [temp_1, temp_2]
+			Volume_calibrations.calcDecline()
+		elif Volume_calibrations.callib_mode == 1:
+			Volume_calibrations.right_volume = [temp_1, temp_2]
+			Volume_calibrations.calcDecline()
 
 		# print(avg, " ", max_vol, " ", avg_2, max_vol_2)
-	if timer > 1:
+	if timer > 10:
 		timer = 0
 		effect.set_recording_active(false)
 		effect.set_recording_active(true)

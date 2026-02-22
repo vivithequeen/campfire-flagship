@@ -5,10 +5,11 @@
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_6qndr"]
 
-[node name="Input" type="Node" unique_id=1991734150 node_paths=PackedStringArray("visualiser", "visualiser_2")]
+[node name="Input" type="Node" unique_id=1991734150 node_paths=PackedStringArray("visualiser", "visualiser_2", "visualiser_3")]
 script = ExtResource("1_7kdoc")
 visualiser = NodePath("Sprite2D")
 visualiser_2 = NodePath("Sprite2D2")
+visualiser_3 = NodePath("Sprite2D3")
 
 [node name="Recorder_1" type="AudioStreamPlayer" parent="." unique_id=738993883]
 stream = SubResource("AudioStreamMicrophone_6qndr")
@@ -23,4 +24,9 @@ texture = ExtResource("2_38vlx")
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1015031961]
 position = Vector2(79.00001, 286)
 scale = Vector2(0.7109375, 0.5546875)
+texture = ExtResource("2_38vlx")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1471940097]
+position = Vector2(26.000008, 250)
+scale = Vector2(0.7109375, 0.39062497)
 texture = ExtResource("2_38vlx")
