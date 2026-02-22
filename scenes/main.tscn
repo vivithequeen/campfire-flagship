@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://fukh5p0acmlr" path="res://models/3DModel.jpg" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://jabhsmy03ixw" path="res://scenes/greg_logic.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c2c2krbk6butt" path="res://scenes/notes/note_path.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://co81aul37wxis" path="res://scenes/french.tscn" id="5_tbgi4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgp6g"]
 shading_mode = 0
@@ -59,9 +60,9 @@ lanes = [NodePath("note_path5"), NodePath("note_path3"), NodePath("note_path"), 
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0.7613621, 2.838531)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=7506282]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49804688, -122.50737)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74609375, -122.50737)
 flip_faces = true
-size = Vector3(4, 2.0039063, 249.90001)
+size = Vector3(4, 2.5, 249.90001)
 material = SubResource("StandardMaterial3D_sgp6g")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1857422959]
@@ -115,3 +116,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -0.15, -5.2)
 
 [node name="note_path4" parent="." unique_id=1173584408 instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5500001, -0.15, -5.2)
+
+[node name="french" parent="." unique_id=370817246 instance=ExtResource("5_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -1.9000001)

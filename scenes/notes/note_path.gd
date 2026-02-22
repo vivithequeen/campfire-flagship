@@ -33,3 +33,5 @@ func create_note():
 	add_child(i);
 	active_notes.append(i);
 	
+
+	
