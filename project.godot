@@ -13,7 +13,25 @@ config_version=5
 config/name="CAMPFIRE-FLAGSHIP"
 run/main_scene="uid://dahqqy1u6ee8i"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/stretch_mode=5
+boot_splash/image="uid://bum3644bqlsqq"
+config/icon="uid://bum3644bqlsqq"
+
+[audio]
+
+buses/default_bus_layout="uid://c2k25r8gc3gq0"
+driver/enable_input=true
+
+[autoload]
+
+Volume_calibrations="*uid://c5w5dn8pj6pld"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/stretch/mode="canvas_items"
 
 [audio]
 

@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://ckevpr2nx5w27"]
+
+[ext_resource type="Shader" uid="uid://gx4f1pvuvgc8" path="res://noob/shaders/bg_wave.gdshader" id="1_571k6"]
+[ext_resource type="Script" uid="uid://co4xytc8ruwd3" path="res://noob/scripts/calibration.gd" id="2_vc1oo"]
+[ext_resource type="Script" uid="uid://cqbmp44jq7mjq" path="res://noob/scripts/max_redefiner.gd" id="3_m35xt"]
+[ext_resource type="PackedScene" uid="uid://cy726wc5q8mxn" path="res://noob/scenes/input.tscn" id="3_pi1i2"]
+[ext_resource type="Script" uid="uid://j3vg5osjr87a" path="res://noob/scripts/calibator_button.gd" id="3_vjscj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vc1oo"]
+shader = ExtResource("1_571k6")
+
+[node name="Calibration" type="Control" unique_id=1672033582]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=962083402]
+visible = false
+material = SubResource("ShaderMaterial_vc1oo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.6431373, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1388325634]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1942480931]
+layout_mode = 2
+text = "Input 1:"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer" unique_id=1642447320]
+layout_mode = 2
+max_value = 0.0
+script = ExtResource("2_vc1oo")
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer" unique_id=1372007902 node_paths=PackedStringArray("theone")]
+layout_mode = 2
+text = "Max redifine"
+script = ExtResource("3_m35xt")
+theone = NodePath("../../Input")
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=388869606 node_paths=PackedStringArray("labels")]
+layout_mode = 2
+text = "RESET"
+script = ExtResource("3_vjscj")
+reset = true
+labels = NodePath("../Label2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2040292018]
+layout_mode = 2
+alignment = 1
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=118275800 node_paths=PackedStringArray("labels")]
+layout_mode = 2
+text = "Left
+"
+script = ExtResource("3_vjscj")
+volume_calib = true
+left = true
+labels = NodePath("../../Label2")
+
+[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1511463442 node_paths=PackedStringArray("labels")]
+layout_mode = 2
+text = "Right"
+script = ExtResource("3_vjscj")
+volume_calib = true
+labels = NodePath("../../Label2")
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=989031165]
+layout_mode = 2
+text = "calibrating: none"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=1734324685]
+z_index = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "How to calibrate:
+1. select volume input slider
+2. press reset
+3. put audio over first mic and hold for 5 seconds
+4. do same for other mic
+5. put audio over left and press Left (no need to hold)"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=164808420]
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="Input" parent="." unique_id=1991734150 instance=ExtResource("3_pi1i2")]
+debug = true
+
+[node name="Label3" type="Label" parent="." unique_id=1922914769]
+z_index = 2
+layout_mode = 0
+offset_left = 767.0
+offset_top = 134.0
+offset_right = 1271.0
+offset_bottom = 257.0
+theme_override_font_sizes/font_size = 13
+text = "I am going sleep rn 
+Input can be found by loading in [Input] node 
+And just set debug to false
++ add button script that loads next scene (Input calibration stays trough scenes )"
