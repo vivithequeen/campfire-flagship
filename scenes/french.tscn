@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://co81aul37wxis"]
+
+[ext_resource type="Texture2D" uid="uid://cfopuxdltte8" path="res://assets/french/1-Sheet.png" id="1_7a8yi"]
+[ext_resource type="Script" uid="uid://b4wctfe8bgsn7" path="res://scenes/french.gd" id="1_fdxwf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdxwf"]
+atlas = ExtResource("1_7a8yi")
+region = Rect2(0, 0, 187, 293)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nawj8"]
+atlas = ExtResource("1_7a8yi")
+region = Rect2(187, 0, 187, 293)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr3vn"]
+atlas = ExtResource("1_7a8yi")
+region = Rect2(374, 0, 187, 293)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5j1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdxwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nawj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr3vn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_fy03y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_80r5k"]
+resource_name = "stretch"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1.2, 1), Vector3(1, 1, 1), Vector3(1.2, 1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mcjop"]
+_data = {
+&"RESET": SubResource("Animation_fy03y"),
+&"stretch": SubResource("Animation_80r5k")
+}
+
+[node name="french" type="Node3D" unique_id=370817246]
+script = ExtResource("1_fdxwf")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=546654502]
+pixel_size = 0.0075
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_y5j1q")
+frame_progress = 0.95876753
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=894482449]
+libraries/ = SubResource("AnimationLibrary_mcjop")
