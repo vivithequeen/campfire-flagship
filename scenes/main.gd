@@ -12,6 +12,7 @@ var next_note_column: int
 
 var health = 5;
 
+var hit_timer = 0;
 
 func pop_next_note() -> void:
 	if note_data.size() == 0:
@@ -34,26 +35,37 @@ func _ready() -> void:
 	timer.timeout.connect(music_player.play)
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	if(health < 5):
+		hit_timer+=delta;
+		if(hit_timer > 1.4):
+			health+=1;
+			hit_timer = 0;
 	if music_player.playing and music_player.get_playback_position() >= next_note_position:
 		spawn_note(next_note_column)
 		pop_next_note()
 		
-	var manual_note;
-	if(Input.is_action_just_pressed("1")):
-		manual_note = 0;
-	if(Input.is_action_just_pressed("2")):
-		manual_note = 1;
-	if(Input.is_action_just_pressed("3")):
-		manual_note = 2;
-	if(Input.is_action_just_pressed("4")):
-		manual_note = 3;
-	if(Input.is_action_just_pressed("5")):
-		manual_note = 4;
+	# var manual_note;
+	# if(Input.is_action_just_pressed("1")):
+	# 	manual_note = 0;
+	# if(Input.is_action_just_pressed("2")):
+	# 	manual_note = 1;
+	# if(Input.is_action_just_pressed("3")):
+	# 	manual_note = 2;
+	# if(Input.is_action_just_pressed("4")):
+	# 	manual_note = 3;
+	# if(Input.is_action_just_pressed("5")):
+	# 	manual_note = 4;
 
-	spawn_note(manual_note)
+	# spawn_note(manual_note)
+
+	var tween = get_tree().create_tween();
+	tween.tween_property($CanvasLayer/ProgressBar, "value", (20 * health), delta * 5);
 
 
 func _on_area_3d_area_entered(_area: Area3D) -> void:
 	health-=1;
+	hit_timer = 0;
+	if(health == 0):
+		get_tree().change_scene_to_file("res://noob/scenes/main_menu.tscn")
 	print('asdfdf')
