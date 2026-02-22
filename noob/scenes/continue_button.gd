@@ -6,3 +6,4 @@ func _on_pressed() -> void:
 	$"../../../".add_child(temp2)
 	$"../../".queue_free()
 	temp2.get_node("greg_logic").nb_input = $"../../../Input"
+	$"../../../Input".debug = false
