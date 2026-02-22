@@ -14,7 +14,7 @@ var node_instance = load("res://scenes/notes/note.tscn");
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for i in range(active_notes.size()):
-		print(active_notes[i].progress_ratio)
+		#print(active_notes[i].progress_ratio)
 		active_notes[i].progress_ratio+=delta
 		if(active_notes[i].progress_ratio > 0.95):
 			

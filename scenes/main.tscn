@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://jabhsmy03ixw" path="res://scenes/greg_logic.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c2c2krbk6butt" path="res://scenes/notes/note_path.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://co81aul37wxis" path="res://scenes/french.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://d3l556b1w5xi4" path="res://scenes/chart_parser.tscn" id="5_tefeu"]
+[ext_resource type="AudioStream" uid="uid://dgppupglo3wyn" path="res://assets/greg vs the french.ogg" id="6_o6xl0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgp6g"]
 shading_mode = 0
@@ -62,9 +64,17 @@ shadow_mesh = SubResource("ArrayMesh_stepb")
 [sub_resource type="BoxShape3D" id="BoxShape3D_tbgi4"]
 size = Vector3(0.2, 1, 0.2)
 
-[node name="Main" type="Node3D" unique_id=1218756885 node_paths=PackedStringArray("lanes")]
+[node name="Main" type="Node3D" unique_id=1218756885 node_paths=PackedStringArray("lanes", "chart_parser", "music_player")]
 script = ExtResource("1_0wfyh")
 lanes = [NodePath("note_path5"), NodePath("note_path3"), NodePath("note_path"), NodePath("note_path2"), NodePath("note_path4")]
+chart_parser = NodePath("ChartParser")
+music_player = NodePath("MusicPlayer")
+wait_time = 1.5
+
+[node name="ChartParser" parent="." unique_id=1674266622 instance=ExtResource("5_tefeu")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=559565442]
+stream = ExtResource("6_o6xl0")
 
 [node name="Input" parent="." unique_id=1991734150 instance=ExtResource("2_tipki")]
 
