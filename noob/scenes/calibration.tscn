@@ -1,14 +1,9 @@
 [gd_scene format=3 uid="uid://ckevpr2nx5w27"]
 
-[ext_resource type="Shader" uid="uid://gx4f1pvuvgc8" path="res://noob/shaders/bg_wave.gdshader" id="1_571k6"]
 [ext_resource type="Script" uid="uid://co4xytc8ruwd3" path="res://noob/scripts/calibration.gd" id="2_vc1oo"]
-[ext_resource type="Script" uid="uid://cqbmp44jq7mjq" path="res://noob/scripts/max_redefiner.gd" id="3_m35xt"]
-[ext_resource type="PackedScene" uid="uid://cy726wc5q8mxn" path="res://noob/scenes/input.tscn" id="3_pi1i2"]
 [ext_resource type="Script" uid="uid://j3vg5osjr87a" path="res://noob/scripts/calibator_button.gd" id="3_vjscj"]
-[ext_resource type="Script" uid="uid://bv2f3ah5re3lb" path="res://noob/scenes/continue_button.gd" id="5_f8wp1"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vc1oo"]
-shader = ExtResource("1_571k6")
+[ext_resource type="Script" path="res://noob/scenes/continue_button.gd" id="5_f8wp1"]
+[ext_resource type="Texture2D" uid="uid://b46e3pdcueu2s" path="res://assets/background.png" id="5_m35xt"]
 
 [node name="Calibration" type="Control" unique_id=1672033582]
 layout_mode = 3
@@ -18,17 +13,6 @@ anchor_bottom = 1.0
 offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=962083402]
-visible = false
-material = SubResource("ShaderMaterial_vc1oo")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.6431373, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1388325634]
 layout_mode = 1
@@ -51,74 +35,61 @@ layout_mode = 2
 max_value = 0.0
 script = ExtResource("2_vc1oo")
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer" unique_id=1372007902 node_paths=PackedStringArray("theone")]
-layout_mode = 2
-text = "Max redifine"
-script = ExtResource("3_m35xt")
-theone = NodePath("../../Input")
-
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=388869606 node_paths=PackedStringArray("labels")]
-layout_mode = 2
-text = "RESET"
-script = ExtResource("3_vjscj")
-reset = true
-labels = NodePath("../HBoxContainer/Label2")
-
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2040292018]
 layout_mode = 2
 alignment = 1
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=118275800 node_paths=PackedStringArray("labels")]
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=118275800]
 layout_mode = 2
-text = "Left
-"
+theme_override_font_sizes/font_size = 35
+text = "Left pos"
 script = ExtResource("3_vjscj")
 volume_calib = true
 left = true
-labels = NodePath("../Label2")
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1511463442 node_paths=PackedStringArray("labels")]
+[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1511463442]
 layout_mode = 2
-text = "Right"
+theme_override_font_sizes/font_size = 35
+text = "Right pos"
 script = ExtResource("3_vjscj")
 volume_calib = true
-labels = NodePath("../Label2")
-
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=989031165]
-layout_mode = 2
-text = "calibrating: none"
-horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="VBoxContainer" unique_id=1734324685]
 z_index = 2
 layout_mode = 2
-theme_override_font_sizes/font_size = 7
 text = "How to calibrate:
-1. select volume input slider
-2. press reset
-3. put audio over first mic and hold for 5 seconds
-4. do same for other mic
-5. put audio over left and press Left (no need to hold)"
+1. Setup mono to stereo
+2. Make audio at left
+3. Make audio at right"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer" unique_id=16132230]
+layout_mode = 2
+text = "Disable micraphone and use keyboard >:(("
+script = ExtResource("3_vjscj")
+disability = true
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=164808420]
 layout_mode = 2
 text = "CONTINUE"
 script = ExtResource("5_f8wp1")
 
-[node name="Input" parent="." unique_id=1991734150 instance=ExtResource("3_pi1i2")]
-debug = true
-
 [node name="Label3" type="Label" parent="." unique_id=1922914769]
 z_index = 2
 layout_mode = 0
-offset_left = 561.0
-offset_top = 52.0
-offset_right = 1065.0
-offset_bottom = 175.0
+offset_left = 539.0
+offset_top = 76.0
+offset_right = 1043.0
+offset_bottom = 199.0
 theme_override_font_sizes/font_size = 13
 text = "I am going sleep rn 
 Input can be found by loading in [Input] node 
 And just set debug to false
 + add button script that loads next scene (Input calibration stays trough scenes )"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=976315641]
+z_index = -2
+texture_filter = 1
+position = Vector2(240, 139)
+texture = ExtResource("5_m35xt")
 
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="VBoxContainer/ContinueButton" method="_on_pressed"]

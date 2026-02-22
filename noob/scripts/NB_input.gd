@@ -39,23 +39,17 @@ func _process(delta: float) -> void:
 		var avg: float = 0
 		var avg_2: float = 0
 		var indexer: int = 0
-		if Volume_calibrations.reset:
-			Volume_calibrations.max_vol = [0,0]
 		for i in temp_recording.data.slice(temp_recording.data.size() - 50000):
 			indexer = (indexer + 1) % 2
 			if indexer == 0:
 				avg += abs(i)  
 			else: 
 				avg_2 += abs(i)
-		if setting_max:
-			if avg > Volume_calibrations.max_vol[0]: Volume_calibrations.max_vol[0] = avg 
-			if avg_2 > Volume_calibrations.max_vol[1]: Volume_calibrations.max_vol[1] = avg_2
-		var temp_1 = min(avg / Volume_calibrations.max_vol[0], 1)
-		var temp_2 = min(avg_2 / Volume_calibrations.max_vol[1], 1)
-		if debug: visualiser.global_position.x = temp_1 * 600
-		if debug: visualiser_2.global_position.x = temp_2 * 600
+		var maxxx = max(avg, avg_2)
+		if debug: visualiser.global_position.x = avg / maxxx * 500
+		if debug: visualiser_2.global_position.x = avg_2 / maxxx * 500
 		var temp_3 = clamp(
-			(temp_1 - temp_2 - Volume_calibrations.difrance[0]) / max(
+			(avg - avg_2 - Volume_calibrations.difrance[0]) / max(
 				(
 					Volume_calibrations.difrance[1] - 
 					Volume_calibrations.difrance[0]
@@ -63,11 +57,11 @@ func _process(delta: float) -> void:
 				0.0001
 			), 0, 1)
 		input_value = temp_3
-		if debug: visualiser_3.global_position.x = temp_3 * 600
+		if debug: visualiser_3.global_position.x = temp_3 * 400
 		if Volume_calibrations.callib_mode == -1:
-			Volume_calibrations.difrance[0] = temp_1 - temp_2;
+			Volume_calibrations.difrance[0] = avg - avg_2;
 		elif Volume_calibrations.callib_mode == 1:
-			Volume_calibrations.difrance[1] = temp_1 - temp_2;
+			Volume_calibrations.difrance[1] = avg - avg_2;
 
 		# print(avg, " ", max_vol, " ", avg_2, max_vol_2)
 	if timer > 10:

@@ -73,7 +73,11 @@ func _on_area_3d_area_entered(_area: Area3D) -> void:
 	hit_timer = 0;
 	can_be_hit = false;
 	if(health == 0):
-		get_tree().change_scene_to_file("res://noob/scenes/main_menu.tscn")
+		var temp = preload("res://scenes/main.tscn")
+		var temp2 = temp.instantiate()
+		$"../".add_child(temp2)
+		temp2.get_node("greg_logic").nb_input = $"../Input"
+		queue_free()
 		return;
 	flash_white()
 

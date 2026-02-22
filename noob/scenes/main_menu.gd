@@ -2,4 +2,4 @@ extends Control
 
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://noob/scenes/calibration.tscn")
+	get_tree().change_scene_to_file("res://noob/scenes/main_loader.tscn")
