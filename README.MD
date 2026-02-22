@@ -7,11 +7,11 @@ use two mono michrophones and then combine them into single sterio, i suggest us
 ## Setup QjackCTL<br>
 Do this for mono to sterio -> https://youtu.be/mX617Eu-8Ro?si=N6UpxA6eJOvtL_af<br>
 # Instalation for linux<br>
-```<br>
+```
 sudo pacman -S qjackctl<br>
 ```<br>
 # Lounch for Linux <br>
-```<br>
+```
 qjackctl<br>
 ```<br>
 and when you lounch it, run the game and go to calebration menu, where you join the audios together as shown in img<br>
