@@ -1,17 +1,17 @@
-extends Node
+class_name ChartParser extends Node
 
-const CHART_RESOLUTION: int = 192
+@export var chart_file_path: String = "res://charts/Greg vs. The French.txt"
+@export var chart_resolution: int = 192
+@export var bpm: int = 120
 
-
-func _ready() -> void:
-	var chart: String = FileAccess.get_file_as_string("res://charts/Greg vs. The French.txt")
-	var notes = []
+func get_note_data() -> Array:
+	var chart: String = FileAccess.get_file_as_string(chart_file_path)
+	var note_data = []
 	
 	for line: String in chart.split("\n", false):
 		var words: PackedStringArray = line.split(" ")
-		var note = {
-			"position": float(words[0]) / CHART_RESOLUTION,
+		note_data.insert(0, {
+			"position": float(words[0])/chart_resolution / bpm*60,
 			"column": int(words[3]),
-		}
-		notes.append(note)
-	print(notes)
+		})
+	return note_data
