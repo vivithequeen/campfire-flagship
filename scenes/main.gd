@@ -3,7 +3,7 @@ extends Node3D
 
 @export var lanes : Array[Path3D]
 
-
+var health = 5;
 
 
 func _physics_process(delta: float) -> void:
@@ -25,3 +25,6 @@ func _physics_process(delta: float) -> void:
 func spawn_note(note):
 	if(note || note == 0):
 		lanes[note].create_note()
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	health-=1;

@@ -52,6 +52,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_stepb")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbgi4"]
+size = Vector3(0.2, 1, 0.2)
+
 [node name="Main" type="Node3D" unique_id=1218756885 node_paths=PackedStringArray("lanes")]
 script = ExtResource("1_0wfyh")
 lanes = [NodePath("note_path5"), NodePath("note_path3"), NodePath("note_path"), NodePath("note_path2"), NodePath("note_path4")]
@@ -99,6 +102,12 @@ material = SubResource("StandardMaterial3D_o5qli")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, -0.538, 1.642)
 mesh = SubResource("ArrayMesh_sugp2")
 
+[node name="Area3D" type="Area3D" parent="greg" unique_id=443181502]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="greg/Area3D" unique_id=2023729285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 0.099999994, 0)
+shape = SubResource("BoxShape3D_tbgi4")
+
 [node name="greg_logic" parent="." unique_id=99708880 node_paths=PackedStringArray("greg_model") instance=ExtResource("3_sugp2")]
 greg_model = NodePath("../greg")
 
@@ -119,3 +128,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5500001, -0.15, -5.2)
 
 [node name="french" parent="." unique_id=370817246 instance=ExtResource("5_tbgi4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -1.9000001)
+
+[connection signal="area_entered" from="greg/Area3D" to="." method="_on_area_3d_area_entered"]
