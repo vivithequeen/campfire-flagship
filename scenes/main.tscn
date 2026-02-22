@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://c2c2krbk6butt" path="res://scenes/notes/note_path.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://co81aul37wxis" path="res://scenes/french.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://d3l556b1w5xi4" path="res://scenes/chart_parser.tscn" id="5_tefeu"]
-[ext_resource type="AudioStream" uid="uid://dgppupglo3wyn" path="res://assets/greg vs the french.ogg" id="6_o6xl0"]
-[ext_resource type="Shader" uid="uid://dtu8a5bcdbo4t" path="res://scenes/clouds.gdshader" id="6_ya4ey"]
-[ext_resource type="Shader" uid="uid://dnwowxvh5y2hn" path="res://scenes/flash.gdshader" id="7_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://dgppupglo3wyn" path="res://assets/audio/greg vs the french.ogg" id="6_o6xl0"]
+[ext_resource type="Shader" path="res://scenes/clouds.gdshader" id="6_ya4ey"]
+[ext_resource type="Shader" path="res://scenes/flash.gdshader" id="7_ya4ey"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85g3d"]
 bg_color = Color(0.88, 0, 0.014666443, 1)
@@ -111,11 +111,6 @@ value = 20.0
 show_percentage = false
 metadata/_edit_lock_ = true
 
-[node name="Line2D" type="Line2D" parent="CanvasLayer" unique_id=244314208]
-position = Vector2(293, 240)
-points = PackedVector2Array(0, 27, 0, 0)
-width = 1.0
-
 [node name="Line2D2" type="Line2D" parent="CanvasLayer" unique_id=793348462]
 position = Vector2(258, 240)
 points = PackedVector2Array(0, 27, 0, 0)
@@ -131,8 +126,12 @@ position = Vector2(187, 240)
 points = PackedVector2Array(0, 27, 0, 0)
 width = 1.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1568280701]
+[node name="Line2D" type="Line2D" parent="." unique_id=244314208]
+position = Vector2(293, 240)
+points = PackedVector2Array(0, 27, 0, 0)
+width = 1.0
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1568280701]
 
 [node name="ChartParser" parent="." unique_id=1674266622 instance=ExtResource("5_tefeu")]
 
@@ -218,21 +217,22 @@ shape = SubResource("BoxShape3D_tbgi4")
 greg_model = NodePath("../greg")
 
 [node name="note_path5" parent="." unique_id=1299989830 instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55, -0.15, -5.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55, -0.15, -7.429252)
 
 [node name="note_path3" parent="." unique_id=1856462577 instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, -0.15, -5.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, -0.15, -7.429252)
 
 [node name="note_path" parent="." unique_id=1884821427 instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -5.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -7.429252)
 
 [node name="note_path2" parent="." unique_id=426235816 instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -0.15, -5.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -0.15, -7.429252)
 
 [node name="note_path4" parent="." unique_id=1173584408 instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5500001, -0.15, -5.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5500001, -0.15, -7.429252)
 
 [node name="french" parent="." unique_id=370817246 instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -1.9000001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6759374, 0.11181766, -1.1308621)
 
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]
 [connection signal="area_entered" from="greg/Area3D" to="." method="_on_area_3d_area_entered"]

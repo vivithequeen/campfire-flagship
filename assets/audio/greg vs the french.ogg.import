@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dgppupglo3wyn"
+path="res://.godot/imported/greg vs the french.ogg-1cf114d0edce8cae6174077b9743170f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/greg vs the french.ogg"
+dest_files=["res://.godot/imported/greg vs the french.ogg-1cf114d0edce8cae6174077b9743170f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=120.0
+beat_count=0
+bar_beats=4

@@ -35,6 +35,7 @@ func _ready() -> void:
 	pop_next_note()
 	var timer = get_tree().create_timer(wait_time)
 	timer.timeout.connect(music_player.play)
+	$french.finished.connect(get_tree().change_scene_to_file.bind("res://noob/scenes/main_menu.tscn"))
 
 
 func _physics_process(delta: float) -> void:
@@ -100,3 +101,7 @@ func flash_white():
 	await get_tree().create_timer(0.1).timeout
 	base_mat.set("shader_parameter/flash", 0.0)
 	can_be_hit = true;
+
+
+func _on_music_player_finished() -> void:
+	$french.explode()

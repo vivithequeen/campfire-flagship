@@ -15,7 +15,7 @@ var node_instance = load("res://scenes/notes/note.tscn");
 func _process(delta: float) -> void:
 	for i in range(active_notes.size()):
 		#print(active_notes[i].progress_ratio)
-		active_notes[i].progress_ratio+=delta
+		active_notes[i].progress_ratio+=delta * 0.35
 		if(active_notes[i].progress_ratio > 0.95):
 			
 			active_notes[i].queue_free();
