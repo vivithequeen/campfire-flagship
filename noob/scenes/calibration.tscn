@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://co4xytc8ruwd3" path="res://noob/scripts/calibration.gd" id="2_vc1oo"]
 [ext_resource type="Script" uid="uid://j3vg5osjr87a" path="res://noob/scripts/calibator_button.gd" id="3_vjscj"]
-[ext_resource type="Script" path="res://noob/scenes/continue_button.gd" id="5_f8wp1"]
+[ext_resource type="Script" uid="uid://bv2f3ah5re3lb" path="res://noob/scenes/continue_button.gd" id="5_f8wp1"]
 [ext_resource type="Texture2D" uid="uid://b46e3pdcueu2s" path="res://assets/background.png" id="5_m35xt"]
 
 [node name="Calibration" type="Control" unique_id=1672033582]
