@@ -45,8 +45,9 @@ func _process(delta: float) -> void:
 				avg += abs(i)  
 			else: 
 				avg_2 += abs(i)
-		if debug: visualiser.global_position.x = avg / 100
-		if debug: visualiser_2.global_position.x = avg_2 / 100
+		var maxxx = max(avg, avg_2)
+		if debug: visualiser.global_position.x = avg / maxxx * 500
+		if debug: visualiser_2.global_position.x = avg_2 / maxxx * 500
 		var temp_3 = clamp(
 			(avg - avg_2 - Volume_calibrations.difrance[0]) / max(
 				(

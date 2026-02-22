@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cy726wc5q8mxn"]
 
 [ext_resource type="Script" uid="uid://cayje6theknyn" path="res://noob/scripts/NB_input.gd" id="1_7kdoc"]
-[ext_resource type="Texture2D" uid="uid://lpmgebw2aj0w" path="res://icon.svg" id="2_38vlx"]
+[ext_resource type="Texture2D" uid="uid://bkrkmj01w1o4" path="res://assets/background_no_track.png" id="2_38vlx"]
+[ext_resource type="Texture2D" uid="uid://qpae05mc85dg" path="res://assets/french/3.png" id="3_hs58m"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_6qndr"]
 
@@ -18,15 +19,16 @@ bus = &"mic_1"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=747813570]
 position = Vector2(63, 84.25)
-scale = Vector2(0.7109375, 0.16796878)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_38vlx")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1015031961]
 position = Vector2(62, 185.00002)
-scale = Vector2(0.7109375, 0.16015632)
+rotation = 3.1415927
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_38vlx")
 
 [node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1471940097]
 position = Vector2(62, 135)
-scale = Vector2(0.7109375, 0.625)
-texture = ExtResource("2_38vlx")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_hs58m")

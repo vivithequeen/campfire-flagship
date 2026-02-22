@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://lvny7ga2o65w"]
 
 [ext_resource type="Texture2D" uid="uid://bum3644bqlsqq" path="res://noob/assets/loadingImg.png" id="1_e2xws"]
-[ext_resource type="Script" uid="uid://bgg1echkydap7" path="res://noob/scenes/main_menu.gd" id="1_ejwqg"]
+[ext_resource type="Script" path="res://noob/scenes/main_menu.gd" id="1_ejwqg"]
+[ext_resource type="PackedScene" uid="uid://cy726wc5q8mxn" path="res://noob/scenes/input.tscn" id="3_se66j"]
 
 [node name="main_menu" type="Control" unique_id=1322387850]
 layout_mode = 3
@@ -61,5 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "Begin"
+
+[node name="Input" parent="." unique_id=1991734150 instance=ExtResource("3_se66j")]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
