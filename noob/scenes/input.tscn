@@ -17,16 +17,16 @@ autoplay = true
 bus = &"mic_1"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=747813570]
-position = Vector2(81, 203)
-scale = Vector2(0.7109375, 0.5390625)
+position = Vector2(63, 84.25)
+scale = Vector2(0.7109375, 0.16796878)
 texture = ExtResource("2_38vlx")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1015031961]
-position = Vector2(79.00001, 286)
-scale = Vector2(0.7109375, 0.5546875)
+position = Vector2(62, 185.00002)
+scale = Vector2(0.7109375, 0.16015632)
 texture = ExtResource("2_38vlx")
 
 [node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1471940097]
-position = Vector2(26.000008, 250)
-scale = Vector2(0.7109375, 0.39062497)
+position = Vector2(62, 135)
+scale = Vector2(0.7109375, 0.625)
 texture = ExtResource("2_38vlx")

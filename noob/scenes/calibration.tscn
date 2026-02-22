@@ -2,10 +2,9 @@
 
 [ext_resource type="Shader" uid="uid://gx4f1pvuvgc8" path="res://noob/shaders/bg_wave.gdshader" id="1_571k6"]
 [ext_resource type="Script" uid="uid://co4xytc8ruwd3" path="res://noob/scripts/calibration.gd" id="2_vc1oo"]
-[ext_resource type="Script" uid="uid://cqbmp44jq7mjq" path="res://noob/scripts/max_redefiner.gd" id="3_m35xt"]
 [ext_resource type="PackedScene" uid="uid://cy726wc5q8mxn" path="res://noob/scenes/input.tscn" id="3_pi1i2"]
 [ext_resource type="Script" uid="uid://j3vg5osjr87a" path="res://noob/scripts/calibator_button.gd" id="3_vjscj"]
-[ext_resource type="Script" uid="uid://bv2f3ah5re3lb" path="res://noob/scenes/continue_button.gd" id="5_f8wp1"]
+[ext_resource type="Script" path="res://noob/scenes/continue_button.gd" id="5_f8wp1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vc1oo"]
 shader = ExtResource("1_571k6")
@@ -51,19 +50,6 @@ layout_mode = 2
 max_value = 0.0
 script = ExtResource("2_vc1oo")
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer" unique_id=1372007902 node_paths=PackedStringArray("theone")]
-layout_mode = 2
-text = "Max redifine"
-script = ExtResource("3_m35xt")
-theone = NodePath("../../Input")
-
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=388869606 node_paths=PackedStringArray("labels")]
-layout_mode = 2
-text = "RESET"
-script = ExtResource("3_vjscj")
-reset = true
-labels = NodePath("../HBoxContainer/Label2")
-
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2040292018]
 layout_mode = 2
 alignment = 1
@@ -92,13 +78,11 @@ horizontal_alignment = 1
 [node name="Label3" type="Label" parent="VBoxContainer" unique_id=1734324685]
 z_index = 2
 layout_mode = 2
-theme_override_font_sizes/font_size = 7
 text = "How to calibrate:
 1. select volume input slider
 2. press reset
-3. put audio over first mic and hold for 5 seconds
-4. do same for other mic
-5. put audio over left and press Left (no need to hold)"
+3. place audio in position 1 and press left after while
+4. place audio in position 2 and press right after while"
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=164808420]
 layout_mode = 2
@@ -106,6 +90,8 @@ text = "CONTINUE"
 script = ExtResource("5_f8wp1")
 
 [node name="Input" parent="." unique_id=1991734150 instance=ExtResource("3_pi1i2")]
+input_value = null
+setting_max = null
 debug = true
 
 [node name="Label3" type="Label" parent="." unique_id=1922914769]
