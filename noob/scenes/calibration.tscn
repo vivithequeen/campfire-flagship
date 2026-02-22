@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ckevpr2nx5w27"]
 
 [ext_resource type="Script" uid="uid://co4xytc8ruwd3" path="res://noob/scripts/calibration.gd" id="2_vc1oo"]
-[ext_resource type="PackedScene" uid="uid://cy726wc5q8mxn" path="res://noob/scenes/input.tscn" id="3_pi1i2"]
 [ext_resource type="Script" uid="uid://j3vg5osjr87a" path="res://noob/scripts/calibator_button.gd" id="3_vjscj"]
 [ext_resource type="Script" path="res://noob/scenes/continue_button.gd" id="5_f8wp1"]
 [ext_resource type="Texture2D" uid="uid://b46e3pdcueu2s" path="res://assets/background.png" id="5_m35xt"]
@@ -40,22 +39,20 @@ script = ExtResource("2_vc1oo")
 layout_mode = 2
 alignment = 1
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=118275800 node_paths=PackedStringArray("labels")]
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=118275800]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Left pos"
 script = ExtResource("3_vjscj")
 volume_calib = true
 left = true
-labels = NodePath("")
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1511463442 node_paths=PackedStringArray("labels")]
+[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1511463442]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Right pos"
 script = ExtResource("3_vjscj")
 volume_calib = true
-labels = NodePath("")
 
 [node name="Label3" type="Label" parent="VBoxContainer" unique_id=1734324685]
 z_index = 2
@@ -64,6 +61,12 @@ text = "How to calibrate:
 1. Setup mono to stereo
 2. Make audio at left
 3. Make audio at right"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer" unique_id=16132230]
+layout_mode = 2
+text = "Disable micraphone and use keyboard >:(("
+script = ExtResource("3_vjscj")
+disability = true
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=164808420]
 layout_mode = 2
@@ -88,8 +91,5 @@ z_index = -2
 texture_filter = 1
 position = Vector2(240, 139)
 texture = ExtResource("5_m35xt")
-
-[node name="Input" parent="." unique_id=1991734150 instance=ExtResource("3_pi1i2")]
-debug = true
 
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="VBoxContainer/ContinueButton" method="_on_pressed"]

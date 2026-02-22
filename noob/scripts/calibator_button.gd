@@ -4,12 +4,15 @@ extends Button
 @export var volume_calib = false
 @export var left = false
 @export var labels : Label
+@export var disability = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if volume_calib:
 		pressed.connect(calib_s)
 	if reset:
 		pressed.connect(resetium)
+	if disability:
+		toggled.connect(get_disabled)
 
 func resetium():
 	Volume_calibrations.max_vol = [0,0]
@@ -22,3 +25,5 @@ func calib_s():
 		# labels.text = "callibrating: none"
 		Volume_calibrations.callib_mode = 0
 		
+func get_disabled(p_enabled):
+	Volume_calibrations.disability = p_enabled

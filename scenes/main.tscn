@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://jabhsmy03ixw" path="res://scenes/greg_logic.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c2c2krbk6butt" path="res://scenes/notes/note_path.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://co81aul37wxis" path="res://scenes/french.tscn" id="5_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://d3l556b1w5xi4" path="res://scenes/chart_parser.tscn" id="5_tefeu"]
+[ext_resource type="PackedScene" path="res://scenes/chart_parser.tscn" id="5_tefeu"]
 [ext_resource type="AudioStream" uid="uid://dgppupglo3wyn" path="res://assets/greg vs the french.ogg" id="6_o6xl0"]
-[ext_resource type="Shader" uid="uid://dtu8a5bcdbo4t" path="res://scenes/clouds.gdshader" id="6_ya4ey"]
-[ext_resource type="Shader" uid="uid://dnwowxvh5y2hn" path="res://scenes/flash.gdshader" id="7_ya4ey"]
+[ext_resource type="Shader" path="res://scenes/clouds.gdshader" id="6_ya4ey"]
+[ext_resource type="Shader" path="res://scenes/flash.gdshader" id="7_ya4ey"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85g3d"]
 bg_color = Color(0.88, 0, 0.014666443, 1)
@@ -133,7 +133,6 @@ width = 1.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1568280701]
 
-
 [node name="ChartParser" parent="." unique_id=1674266622 instance=ExtResource("5_tefeu")]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=559565442]
@@ -214,7 +213,8 @@ mesh = SubResource("ArrayMesh_sugp2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 0.099999994, 0)
 shape = SubResource("BoxShape3D_tbgi4")
 
-[node name="greg_logic" parent="." unique_id=99708880 node_paths=PackedStringArray("greg_model") instance=ExtResource("3_sugp2")]
+[node name="greg_logic" parent="." unique_id=99708880 node_paths=PackedStringArray("nb_input", "greg_model") instance=ExtResource("3_sugp2")]
+nb_input = NodePath("../Input")
 greg_model = NodePath("../greg")
 
 [node name="note_path5" parent="." unique_id=1299989830 instance=ExtResource("4_jyhfs")]

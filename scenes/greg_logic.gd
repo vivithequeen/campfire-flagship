@@ -5,14 +5,18 @@ var greg_lane : int = 1;
 
 
 var lane_x = [-1.6,-0.8,0,0.8,1.6]
-
+@export var nb_input: Node
 
 @export var greg_model : Node3D
 
 func _physics_process(delta: float) -> void:
 		
-	var dir = int(Input.is_action_just_pressed("left")) - int(Input.is_action_just_pressed("right"))
-
+	var dir 
+	if nb_input and !Volume_calibrations.disability:
+		dir = -1 if greg_lane < floor(nb_input.input_value * 4.9999) else (1 if greg_lane > floor(nb_input.input_value * 4.9999) else 0)
+		print(greg_lane , nb_input.input_value * 4.9999)
+	else:
+		dir = int(Input.is_action_just_pressed("left")) - int(Input.is_action_just_pressed("right"))
 	if(dir == -1):
 		move_left()
 	elif(dir == 1):
