@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://jabhsmy03ixw"]
+
+[ext_resource type="Script" uid="uid://dg3efveicqtyp" path="res://scenes/greg_logic.gd" id="1_2g017"]
+
+[node name="greg_logic" type="Node" unique_id=99708880]
+script = ExtResource("1_2g017")
