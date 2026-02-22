@@ -10,3 +10,7 @@ func _ready() -> void:
 
 func slider_changed(p_value):
 	Volume_calibrations.mics[input_device] = p_value
+
+
+func _on_continue_button_pressed() -> void:
+	pass # Replace with function body.

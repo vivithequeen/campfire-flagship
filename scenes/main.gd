@@ -35,9 +35,10 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if music_player.playing and music_player.get_playback_position() >= next_note_position:
-		spawn_note(next_note_column)
-		pop_next_note()
+	if music_player.playing:
+		while music_player.get_playback_position() >= next_note_position:
+			spawn_note(next_note_column)
+			pop_next_note()
 		
 	var manual_note;
 	if(Input.is_action_just_pressed("1")):

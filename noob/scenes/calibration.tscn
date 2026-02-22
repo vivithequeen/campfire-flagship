@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cqbmp44jq7mjq" path="res://noob/scripts/max_redefiner.gd" id="3_m35xt"]
 [ext_resource type="PackedScene" uid="uid://cy726wc5q8mxn" path="res://noob/scenes/input.tscn" id="3_pi1i2"]
 [ext_resource type="Script" uid="uid://j3vg5osjr87a" path="res://noob/scripts/calibator_button.gd" id="3_vjscj"]
+[ext_resource type="Script" uid="uid://bv2f3ah5re3lb" path="res://noob/scenes/continue_button.gd" id="5_f8wp1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vc1oo"]
 shader = ExtResource("1_571k6")
@@ -14,6 +15,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -34,9 +36,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
-offset_top = 20.0
+offset_top = 1.0
 offset_right = -20.0
-offset_bottom = -20.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -60,7 +62,7 @@ layout_mode = 2
 text = "RESET"
 script = ExtResource("3_vjscj")
 reset = true
-labels = NodePath("../Label2")
+labels = NodePath("../HBoxContainer/Label2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2040292018]
 layout_mode = 2
@@ -73,16 +75,16 @@ text = "Left
 script = ExtResource("3_vjscj")
 volume_calib = true
 left = true
-labels = NodePath("../../Label2")
+labels = NodePath("../Label2")
 
 [node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1511463442 node_paths=PackedStringArray("labels")]
 layout_mode = 2
 text = "Right"
 script = ExtResource("3_vjscj")
 volume_calib = true
-labels = NodePath("../../Label2")
+labels = NodePath("../Label2")
 
-[node name="Label2" type="Label" parent="VBoxContainer" unique_id=989031165]
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=989031165]
 layout_mode = 2
 text = "calibrating: none"
 horizontal_alignment = 1
@@ -90,7 +92,7 @@ horizontal_alignment = 1
 [node name="Label3" type="Label" parent="VBoxContainer" unique_id=1734324685]
 z_index = 2
 layout_mode = 2
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 7
 text = "How to calibrate:
 1. select volume input slider
 2. press reset
@@ -98,9 +100,10 @@ text = "How to calibrate:
 4. do same for other mic
 5. put audio over left and press Left (no need to hold)"
 
-[node name="Button2" type="Button" parent="VBoxContainer" unique_id=164808420]
+[node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=164808420]
 layout_mode = 2
 text = "CONTINUE"
+script = ExtResource("5_f8wp1")
 
 [node name="Input" parent="." unique_id=1991734150 instance=ExtResource("3_pi1i2")]
 debug = true
@@ -117,3 +120,5 @@ text = "I am going sleep rn
 Input can be found by loading in [Input] node 
 And just set debug to false
 + add button script that loads next scene (Input calibration stays trough scenes )"
+
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="VBoxContainer/ContinueButton" method="_on_pressed"]
