@@ -12,6 +12,7 @@ var max_vol_2: float= 1
 @export var visualiser_2: Sprite2D
 @export var visualiser_3: Sprite2D
 var audio_input_devices
+@export var debug: bool = false
 
 func _ready() -> void:
 	var idx = AudioServer.get_bus_index("mic_1")
@@ -25,7 +26,14 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	timer += delta
-
+	if debug:
+		visualiser.visible = true
+		visualiser_2.visible = true
+		visualiser_3.visible = true
+	else:
+		visualiser.visible = false
+		visualiser_2.visible = false
+		visualiser_3.visible = false
 	var temp_recording = effect.get_recording()
 	if temp_recording:
 		var avg: float = 0
@@ -44,8 +52,8 @@ func _process(delta: float) -> void:
 			if avg_2 > Volume_calibrations.max_vol[1]: Volume_calibrations.max_vol[1] = avg_2
 		var temp_1 = min(avg / Volume_calibrations.max_vol[0], 1)
 		var temp_2 = min(avg_2 / Volume_calibrations.max_vol[1], 1)
-		visualiser.global_position.x = temp_1 * 600
-		visualiser_2.global_position.x = temp_2 * 600
+		if debug: visualiser.global_position.x = temp_1 * 600
+		if debug: visualiser_2.global_position.x = temp_2 * 600
 		var temp_3 = clamp(
 			(temp_1 - temp_2 - Volume_calibrations.difrance[0]) / max(
 				(
@@ -54,7 +62,8 @@ func _process(delta: float) -> void:
 				),
 				0.0001
 			), 0, 1)
-		visualiser_3.global_position.x = temp_3 * 600
+		input_value = temp_3
+		if debug: visualiser_3.global_position.x = temp_3 * 600
 		if Volume_calibrations.callib_mode == -1:
 			Volume_calibrations.difrance[0] = temp_1 - temp_2;
 		elif Volume_calibrations.callib_mode == 1:

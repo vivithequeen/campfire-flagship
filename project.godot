@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="CAMPFIRE-FLAGSHIP"
-run/main_scene="uid://ckevpr2nx5w27"
+run/main_scene="uid://lvny7ga2o65w"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/stretch_mode=5
+boot_splash/image="uid://bum3644bqlsqq"
+config/icon="uid://bum3644bqlsqq"
 
 [audio]
 

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://lvny7ga2o65w"]
+
+[node name="main_menu" type="Control" unique_id=1322387850]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=571890503]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5734735, 0.8003885, 0.9078005, 1)
+
+[node name="Label" type="Label" parent="." unique_id=2008771858]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "GREG vs FRENCH"
+
+[node name="Label3" type="Label" parent="." unique_id=1970323476]
+z_index = 2
+layout_mode = 0
+offset_left = 38.0
+offset_top = -94.0
+offset_right = 1535.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 30
+text = "Add main menu and make it lead to [calibration] scene
+(rn goal get player to able to calibrate and play and loose at least one round XD)
+"
